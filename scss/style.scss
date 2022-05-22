@@ -1,0 +1,119 @@
+@use "variables" as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300;600;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+}
+
+body{
+    box-sizing: content-box;
+    width: 100vw;
+    background: linear-gradient(30deg, #d48a7d, #8fc5e9); 
+    background-size: cover;
+    font-family: $fontType;
+  }
+  
+  .gallery{
+    width: 90vw;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    margin: 2em 0;
+    gap: 2em;
+  }
+  
+  .imageDiv{
+    width: $imageWidth;
+    height: $imageHeight;
+    border-radius: 10px;
+    box-shadow: $imageNormalShadow;
+    overflow: hidden;
+    position: relative;
+    transition:  all $effectDuration ease-in;
+
+        &:hover{  
+            box-shadow: $imageHoverShadow;
+        }
+        &:hover .mask::before{
+            opacity: $maskOpacity;
+        }
+        
+        &:hover .image{
+            transform: scale(1.2);
+        }
+        
+        &:hover .headText{
+            top: 10%;
+        }
+        
+        &:hover .imageDesc{
+            bottom: 5%;
+        }
+  }
+  
+  .imageHolder{
+    width: 100%;
+    height: 100%;
+  }
+  
+  .mask{
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+ 
+  
+    &::before{
+        position: absolute;
+        content: "";
+        inset: 0;
+        background: $maskColor;
+        opacity: 0;
+        transition: opacity $effectDuration;
+    }
+}
+
+  .headText{
+    position: absolute;
+    left: 0;
+    top: -100px;
+    right: 0;
+    color: #FFFFFF;
+    font-size: $headerFontSize;
+    text-align: center;
+    z-index: 2;
+    transition: top $effectDuration;
+  
+   &::before{
+        position: absolute;
+        content: "";
+        top: -5%;
+        left: 0;
+        right: 0;
+        bottom: -10%;
+        background: rgba(0, 0, 0, .5);
+        z-index: -1;
+    }
+}
+  
+  .image{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    transition: transform $effectDuration;
+    z-index: 0;
+  }
+  
+  .imageDesc{
+    position: absolute;
+    left: 10px;
+    bottom: -120%;
+    right: 0;
+    color: #FFFFFF;
+    font-size: $textFontSize;
+    z-index: 1;
+    transition: bottom $effectDuration;
+  }
