@@ -62,7 +62,7 @@ body {
   position: absolute;
   content: "";
   inset: 0;
-  background: rgb(42, 17, 151);
+  background: rgb(201, 131, 0);
   opacity: 0;
   transition: opacity 400ms;
 }
